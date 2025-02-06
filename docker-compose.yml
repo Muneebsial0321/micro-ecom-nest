@@ -6,6 +6,7 @@ services:
       image:postgres:latest
 
     products_db_pg:
+      image:postgres:latest
     orders_db_pg:
     mail_db_cassandra:
     nginx:
