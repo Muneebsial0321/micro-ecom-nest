@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+    rabbitmq:
+    user_db_pg:
+    products_db_pg:
+    orders_db_pg:
+    mail_db_cassandra:
+    nginx:
