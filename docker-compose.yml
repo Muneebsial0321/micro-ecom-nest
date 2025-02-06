@@ -8,5 +8,6 @@ services:
     products_db_pg:
       image:postgres:latest
     orders_db_pg:
+      image:postgres:latest
     mail_db_cassandra:
     nginx:
