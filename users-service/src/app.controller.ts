@@ -3,10 +3,14 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
+  @Get('test')
+  getHello() {
+    return this.appService.Dev_Send_Message();
+  }
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  get() {
+    return { "users": "Working" }
   }
 }
