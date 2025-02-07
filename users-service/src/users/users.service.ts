@@ -1,18 +1,33 @@
 import { Injectable } from '@nestjs/common';
+import { DbService } from 'src/db/db.service';
 
 @Injectable()
 export class UsersService {
+  constructor(private readonly db: DbService) { }
 
-  findAll() {
-    return `This action returns all users`;
+  findAll(pageNo: number = 0) {
+    const skip = pageNo * 20
+    const take = 20
+    return this.db.user.findMany({ take, skip, orderBy: { createdAt: "asc" } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    return this.db.user.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        createdAt: true,
+        phoneNumber: true,
+        profilePic: true,
+        provider: true
+      }
+    })
   }
 
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    return this.db.user.delete({ where: { id } })
   }
 }
