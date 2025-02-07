@@ -6,17 +6,21 @@ services:
       - "5672:5672"
       - "15672:15672"
     image: rabbitmq:management
-  
-  
+
   user_db_pg:
     container_name: user-db-pg
     image: postgres:latest
     ports:
-      - "5432:5432"
+      - 5433:5432
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 123
       POSTGRES_DB: user_db
+    networks:
+      - nestjs_network
+networks:
+  nestjs_network:
+    driver: bridge
     # products_db_pg:
     #   image:postgres:latest
     # orders_db_pg:
