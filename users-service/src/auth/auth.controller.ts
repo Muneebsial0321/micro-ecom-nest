@@ -1,10 +1,26 @@
-import { Controller, Get, Param, Req, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) { }
+
+
+  @Post('register')
+  register(){}
+
+  @Post('login')
+  login(){}
+
+  @Post('forget-password')
+  forgetPassword(){}
+
+  @Post('reset-password')
+  resetPassword(){}
+
+
+
 
 
   @UseGuards(AuthGuard('google'))
@@ -15,7 +31,6 @@ export class AuthController {
 
   @UseGuards(AuthGuard('google'))
   @Get("google/callback")
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   googleAuthCallback(@Req() _req) { 
     // console.log({req})
     // to-do

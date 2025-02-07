@@ -14,8 +14,17 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  name     String
-  email    String
-  password String?
+  id              String    @id @default(uuid())
+  name            String
+  email           String
+  password        String?
+  provider        String?   @default("local")
+  profilePic      String?
+  phoneNumber     String?
+  isEmailVerified Boolean?  @default(false)
+  otp             String?
+  otpExpireDate   DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedat       DateTime?
 }
