@@ -9,8 +9,3 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: user_db
-#     networks:
-#       - nestjs_network
-# networks:
-#   nestjs_network:
-#     driver: bridge
