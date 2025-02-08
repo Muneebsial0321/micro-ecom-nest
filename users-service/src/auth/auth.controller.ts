@@ -10,8 +10,7 @@ export class AuthController {
     private readonly mail: EmailService,
 
   ) { }
-
-
+  
   @Get('register')
   register() {
     this.mail.RegisterMail("")
