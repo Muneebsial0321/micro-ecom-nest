@@ -1,10 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { ClientOptions, ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
 
 @Injectable()
-export class EmailServiceService {
+export class EmailService {
+    constructor(private readonly logger: Logger) { }
     private readonly EmailService: ClientProxy = ClientProxyFactory.create(Options('mail-queue'))
-    
+
+    RegisterMail(to: string) {
+        this.logger.log("Sending Register Email")
+        this.EmailService.emit("register", { to })
+    }
 
 }
 
