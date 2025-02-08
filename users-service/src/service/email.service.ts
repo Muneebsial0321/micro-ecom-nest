@@ -3,7 +3,8 @@ import { ClientOptions, ClientProxy, ClientProxyFactory, Transport } from '@nest
 
 @Injectable()
 export class EmailService {
-    constructor(private readonly logger: Logger) { }
+    private logger = new Logger("Mail MicroService")
+    // constructor(private readonly logger: Logger) { }
     private readonly EmailService: ClientProxy = ClientProxyFactory.create(Options('mail-queue'))
 
     RegisterMail(to: string) {
