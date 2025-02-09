@@ -5,7 +5,10 @@ import { MailsModule } from './mails/mails.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MailsModule, ConfigModule.forRoot({ isGlobal: true, envFilePath: "./.env.dev" })],
+  imports: [MailsModule, ConfigModule.forRoot({
+    isGlobal: true,
+    // envFilePath: "./.env.dev"
+  })],
   controllers: [AppController],
   providers: [AppService],
 })
