@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MailsModule } from './mails/mails.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [MailsModule],
+  imports: [MailsModule, ConfigModule.forRoot({ isGlobal: true, envFilePath: "./.env.dev" })],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
