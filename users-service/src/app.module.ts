@@ -9,7 +9,7 @@ import { ServiceModule } from './service/service.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
-    envFilePath: './.env.dev',
+    // envFilePath: './.env.dev',
     isGlobal: true
   }), AuthModule, DbModule, UsersModule, ServiceModule ],
   controllers: [AppController],

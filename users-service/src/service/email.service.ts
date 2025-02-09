@@ -9,7 +9,7 @@ export class EmailService {
 
     RegisterMail(to: string) {
         this.logger.log("Sending Register Email")
-        this.EmailService.emit("register", { to })
+        this.EmailService.emit("mail.user.register", { to:"hello" })
     }
 
 }
