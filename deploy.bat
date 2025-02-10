@@ -1,8 +1,8 @@
-echo "deploying------------->"
-echo "ADDING------------->"
+echo "deploying->"
+echo "ADDING->"
 git add .
-echo "COMMITING------------->"
+echo "COMMITING->"
 git commit -m "bug fixed"
 git push origin main
-echo "deployed------------->"
+echo "deployed->"
 
