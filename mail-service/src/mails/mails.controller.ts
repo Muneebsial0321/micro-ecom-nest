@@ -11,13 +11,8 @@ export class MailsController {
 
   ) { }
 
-  // @MessagePattern('mail.user.register')
-  // create(@Payload() payload: any) {
-  //   console.log("Message Patterns")
-  //   console.log("Received payload form the queue",payload)
-  // }
 
-  @EventPattern('mail.user.register')
+  @EventPattern('mail.send')
   async creat(@Payload() payload: any) {
     console.log("Event patterns")
     console.log("sending maill")
