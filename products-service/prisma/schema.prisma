@@ -19,4 +19,7 @@ model Product{
 model Reviews{
   id String @id @default(uuid())
 }
+model View{
+  id String @id @default(uuid())
+}
 
