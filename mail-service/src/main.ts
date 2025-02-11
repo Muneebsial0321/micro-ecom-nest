@@ -8,6 +8,9 @@ const  app  = await NestFactory.createMicroservice<MicroserviceOptions>(AppModul
     options: {
       urls: [`${process.env.RABBITMQ_URL}`],
       queue: "mail-queue",
+      // exchange: "mail-exchange",
+      
+      routingKey: "mail.send",
       queueOptions: {
         durable: true,
       },

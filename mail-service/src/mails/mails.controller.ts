@@ -21,12 +21,12 @@ export class MailsController {
   async creat(@Payload() payload: any) {
     console.log("Event patterns")
     console.log("sending maill")
-    await this.mail.sendMail({
-      to: "muneeburrehmansial0321@gmail.com",
-      subject: "mail from micro service",
-      text: "hello form mail service"
+    // await this.mail.sendMail({
+    //   to: "muneeburrehmansial0321@gmail.com",
+    //   subject: "mail from micro service",
+    //   text: "hello form mail service"
 
-    })
+    // })
     console.log("Received payload form the queue", payload)
   }
 

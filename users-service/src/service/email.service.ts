@@ -9,7 +9,7 @@ export class EmailService {
 
     RegisterMail(to: string) {
         this.logger.log("Sending Register Email")
-        this.EmailService.emit("mail.user.register", { to:"hello" })
+        this.EmailService.emit("mail.user.register", { to:"hello    " })
     }
 
 }
@@ -20,7 +20,9 @@ const Options = (queueName: string): ClientOptions => {
         options: {
             queue: queueName,
             urls: [`${process.env.RABBITMQ_URL}`],
-            queueOptions: { durable: true }
+            queueOptions: { durable: true },
+            exchange:'mail-exchange',
+            
         }
 
 
