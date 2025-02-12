@@ -13,13 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product{
-  id String @id @default(uuid())
+model Product {
+  id      String   @id @default(uuid())
+  name    String
+  desc    String
+  size    String[]
+  colours String[]
+  tags    String[]
+  picUrl  String[]
+  price   Float
+  views   View[]
 }
-model Reviews{
-  id String @id @default(uuid())
-}
-model View{
+
+model Reviews {
   id String @id @default(uuid())
 }
 
+model View {
+  id        Int     @id @default(autoincrement())
+  userId    String
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+}
