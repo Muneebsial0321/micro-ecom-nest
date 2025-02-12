@@ -14,25 +14,49 @@ datasource db {
 }
 
 model Product {
-  id      String   @id @default(uuid())
-  name    String
-  desc    String
-  size    String[]
-  colours String[]
-  tags    String[]
-  picUrl  String[]
-  price   Float
-  views   View[]
+  id             String      @id @default(uuid())
+  name           String
+  desc           String
+  size           String[]
+  colours        String[]
+  tags           String[]
+  picUrl         String[]
+  price          Float
+  isAvailable    Boolean     @default(true)
+  viewCount      Int
+  ReviewCount    Int
+  purchasedCount Int
+  view           View[]
+  review         Review[]
+  purchased      Purchased[]
+  createdAt      DateTime    @default(now())
 }
 
-model Reviews {
-  id String @id @default(uuid())
+model Review {
+  id        String   @id @default(uuid())
+  productId String
+  userId    String
+  message   String
+  createdAt DateTime @default(now())
+  Product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
 }
 
 model View {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   userId    String
   productId String
-  product   Product @relation(fields: [productId], references: [id])
-  
+  createdAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+model Purchased {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  productId String
+  Product   Product @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
 }
