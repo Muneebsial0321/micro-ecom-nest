@@ -1,4 +1,5 @@
-import { IsNumber, IsOptional, IsString } from "class-validator"
+import { Type } from "class-transformer"
+import { IsArray, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator"
 
 export class CreateOrderDto {
 
@@ -26,15 +27,15 @@ export class CreateOrderDto {
     @IsString()
     city: string
 
-    @IsNumber()
-    totalPrice: number
+    // @IsString()
+    // status: string
 
     @IsString()
-    status: string
+    paymentMethod:  "cod" | "stripe" | "paypal"
 
-    @IsString()
-    paymentMethod: string
-
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => Product)
     products: Product[]
 
 }
@@ -44,21 +45,21 @@ class Product {
 
     @IsString()
     productId: string
-    
+
     @IsString()
     productName: string
-    
+
     @IsOptional()
     @IsString()
     size: string
-    
+
     @IsString()
     picUrl: string
-    
+
     @IsString()
     @IsString()
     colour: string
-    
+
     @IsString()
     orderId: string
 

@@ -25,12 +25,13 @@ model Order {
   city          String
   totalPrice    Float
   status        OrderStatus   @default(pending)
-  paymentMethod PaymentMethod @default(cod)
+  paymentMethod PaymentMethod
   ProductItem   ProductItem[]
 }
 
 model ProductItem {
   id          String  @id @default(uuid())
+  quantity    Int     @default(1)
   productId   String
   productName String
   size        String?

@@ -7,7 +7,7 @@ services:
       - "15672:15672"
     image: rabbitmq:management
 
-  user_db_pg:
+  users_db:
     container_name: user-db-pg
     image: postgres:latest
     ports:
@@ -16,14 +16,34 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: user_db
-    networks:
-      - nestjs_network
-networks:
-  nestjs_network:
-    driver: bridge
-    # products_db_pg:
-    #   image:postgres:latest
-    # orders_db_pg:
-    #   image:postgres:latest
-    # mail_db_cassandra:
-    # nginx:
+
+  # orders_db:
+  #   container_name: user-db-pg
+  #   image: postgres:latest
+  #   ports:
+  #     - 5433:5432
+  #   environment:
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: 123
+  #     POSTGRES_DB: user_db
+
+  # products_db:
+  #   container_name: user-db-pg
+  #   image: postgres:latest
+  #   ports:
+  #     - 5433:5432
+  #   environment:
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: 123
+  #     POSTGRES_DB: user_db
+
+  # mail_db:
+  #   container_name: user-db-pg
+  #   image: postgres:latest
+  #   ports:
+  #     - 5433:5432
+  #   environment:
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: 123
+  #     POSTGRES_DB: user_db
+
