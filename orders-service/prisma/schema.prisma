@@ -26,10 +26,22 @@ model Order {
   totalPrice    Float
   status        OrderStatus   @default(pending)
   paymentMethod PaymentMethod @default(cod)
-  products      Json[]
+  ProductItem   ProductItem[]
+}
+
+model ProductItem {
+  id          String  @id @default(uuid())
+  productId   String
+  productName String
+  size        String?
+  picUrl      String
+  colour      String?
+  orderId     String
+  order       Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }
 
 enum OrderStatus {
+  canceled
   pending
   processing
   rejected
