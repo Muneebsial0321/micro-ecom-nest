@@ -40,7 +40,9 @@ export class ProductsService {
     }
 
     async findProducts(find:FindType) {
-        await this.db.findProducts(find)
+        console.log("in service ")
+        console.log(    {find})
+       return await this.db.findProducts(find)
      }
 
     async searchProducts() { }

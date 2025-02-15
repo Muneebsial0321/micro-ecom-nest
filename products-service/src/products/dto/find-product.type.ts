@@ -42,12 +42,12 @@ export class FindType {
     @IsNumber()
     @Transform(({value}) => (typeof value === "string" ? Number(value) : 0))
     @IsOptional()
-    skip?: number | null = 0
+    skip: number | null = 0
 
     @IsNumber()
     @Transform(({value}) => (typeof value === "string" ? Number(value) : 25))
     @IsOptional()
     @Max(100)
-    take?: number | null = 25
+    take: number | null = 25
 
 }

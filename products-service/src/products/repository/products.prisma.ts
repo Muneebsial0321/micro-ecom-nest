@@ -28,7 +28,38 @@ export class ProductRepository {
     }
 
     async findProducts(find: FindType) {
-        await this.db.product.findMany({
+        const result = await this.db.product.findMany({
+
+            // Select
+            select: {
+                id: true,
+                name: true,
+                picUrl: true,
+                price: true,
+                viewCount: true,
+                purchasedCount: true
+            },
+
+            // search
+            where: {
+                ...(find.name ? { name: find.name } : {}),
+                ...(find.colour ? { colours: { has: find.colour } } : {}),
+                ...(find.size ? { size: { has: find.size } } : {}),
+                ...(find.lowerPrice ? { price: { lte: find.lowerPrice } } : {}),
+                ...(find.higherPrice ? { price: { gte: find.higherPrice } } : {}),
+            },
+
+            // pagination
+            ...(find.take ? { take: +find.take } : { take: 25 }),
+            ...(find.skip ? { skip: +find.skip } : {}),
+
+            // order
+            ...(find.viewCount ? { orderBy: { viewCount: find.viewCount } } : {}),
+            ...(find.purchasedCount ? { orderBy: { purchasedCount: find.purchasedCount } } : {}),
+            ...(find.reviewCount ? { orderBy: { ReviewCount: find.reviewCount } } : {}),
+
+        })
+        console.log({
 
             // Select
             select: {
@@ -59,5 +90,6 @@ export class ProductRepository {
             ...(find.reviewCount ? { orderBy: { ReviewCount: find.reviewCount } } : {}),
 
         })
+        return result
     }
 }
