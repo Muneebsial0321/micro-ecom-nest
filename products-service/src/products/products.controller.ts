@@ -1,6 +1,7 @@
 import { Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
+import { FindType } from './dto/find-product.type';
 
 @Controller('products')
 export class ProductsController {
@@ -19,17 +20,18 @@ export class ProductsController {
   SearchProduct() { }
 
   @Get("find")
-  FindOnMatch(@Query() find:FindType) { 
-
+  FindOnMatch(@Query() find: FindType) {
+    console.log(find)
+    return this.product.findProducts(find)
   }
 
   @Post()
-  CreateProduct(product:CreateProductDto){
-    
+  CreateProduct(product: CreateProductDto) {
+    return this.product.createProduct(product)
   }
 
   @Delete()
-  DeleteProduct(@Param('id') id: string){
+  DeleteProduct(@Param('id') id: string) {
 
   }
 
@@ -40,17 +42,4 @@ export class ProductsController {
 
 
 
-type FindType = {
 
-  name?: string | null
-  size?: string | null
-  colour?: string | null
-
-  lowerPrice?: number | null
-  higherPrice?: number | null
-
-  viewCount: "asc" | "dec" | null
-  reviewCount: "asc" | "dec" | null
-  purchasedCount: "asc" | "dec" | null
-
-}
