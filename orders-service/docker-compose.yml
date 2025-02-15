@@ -9,3 +9,8 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: orders_db
+    volumes:
+      - orders_data:/var/lib/postgresql/data
+volumes:
+  orders_data:
+    name: Orders_Db_Data

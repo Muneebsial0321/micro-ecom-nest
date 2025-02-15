@@ -9,6 +9,8 @@ services:
       - xpack.security.enabled=false
     ports:
       - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.11.3
@@ -17,13 +19,25 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
       - "5601:5601"
+    volumes:
+      - kibana_data:/usr/share/kibana/data
 
   Product_db:
     image: postgres:latest
     container_name: product_db
-    ports:
-      - 5434:5432
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: 123
-      POSTGRES_DB: product_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=product_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - product_db_data:/var/lib/postgresql/data
+
+volumes:
+  elasticsearch_data:
+    name: prod-elastic-data
+  kibana_data:
+    name: prod-kibana-data
+  product_db_data:
+    name: prod-db

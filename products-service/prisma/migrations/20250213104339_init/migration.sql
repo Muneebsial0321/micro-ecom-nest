@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Product" ALTER COLUMN "ReviewCount" SET DEFAULT 0,
+ALTER COLUMN "purchasedCount" SET DEFAULT 0,
+ALTER COLUMN "viewCount" SET DEFAULT 0;

@@ -11,6 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  
 }
 
 model Product {
@@ -23,9 +24,9 @@ model Product {
   picUrl         String[]
   price          Float
   isAvailable    Boolean     @default(true)
-  viewCount      Int
-  ReviewCount    Int
-  purchasedCount Int
+  viewCount      Int @default(0)
+  ReviewCount    Int @default(0)
+  purchasedCount Int @default(0)
   view           View[]
   review         Review[]
   purchased      Purchased[]

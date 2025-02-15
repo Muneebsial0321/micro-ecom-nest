@@ -10,5 +10,5 @@ export class ProductRepository{
     getAll(){}
     getOne(){}
     updateOne(){}
-    deleeOne(){}
+    deleteOne(){}
 }
