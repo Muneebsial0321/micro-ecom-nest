@@ -1,4 +1,4 @@
-import { HttpCode, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { ProductRepository } from './repository/products.prisma';
 import { ProductElasticSearch } from './repository/products.elasticsearch';
@@ -40,8 +40,6 @@ export class ProductsService {
     }
 
     async findProducts(find:FindType) {
-        console.log("in service ")
-        console.log(    {find})
        return await this.db.findProducts(find)
      }
 

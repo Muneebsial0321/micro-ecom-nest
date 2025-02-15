@@ -13,7 +13,7 @@ export class ProductsController {
 
   @Get('s/:id')
   GetSingleProduct(@Param('id') id: string) {
-
+    return this.product.getSingleProduct(id)
   }
 
   @Get("search")
@@ -32,7 +32,7 @@ export class ProductsController {
 
   @Delete()
   DeleteProduct(@Param('id') id: string) {
-
+    return this.product.deleteProduct(id)
   }
 
 
