@@ -21,7 +21,6 @@ export class ProductsController {
 
   @Get("find")
   FindOnMatch(@Query() find: FindType) {
-    console.log({find})
     return this.product.findProducts(find)
   }
 

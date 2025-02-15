@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "pm2": "pm2 start dist/main.js -i 6 --name products-service",
     "load:test": "npx artillery run load-test.yml",
     "mig": " npx prisma migrate dev --name init && npx prisma generate",
     "build": "nest build",
@@ -47,7 +48,7 @@
     "@swc/core": "^1.10.7",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.7",
+    "@types/node": "^22.13.4",
     "@types/supertest": "^6.0.2",
     "artillery": "^2.0.22",
     "class-transformer": "^0.5.1",
