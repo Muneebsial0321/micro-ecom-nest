@@ -32,9 +32,9 @@ services:
       DATABASES_PASSWORD: 123
       DATABASES_NAME: mydb
       AUTH_TYPE: md5
-      AUTH_USER: myuser
+      AUTH_USER: admin
       LISTEN_PORT: 6432
-      MAX_CLIENT_CONN: 200 
+      MAX_CLIENT_CONN: 500 
       DEFAULT_POOL_SIZE: 20 
     ports:
       - "6432:6432"
