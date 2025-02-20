@@ -55,7 +55,7 @@ services:
       - "6434:5432"
     depends_on:
       product_db:
-        condition: service_healthy # Ensures PgBouncer starts only if PostgreSQL is healthy
+        condition: service_healthy 
     networks:
       - db-network
   # pgbouncer:
