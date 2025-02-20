@@ -2,7 +2,7 @@ config:
   target: 'http://localhost:5000'  
   phases:
     - duration: 30  # Test duration in seconds
-      arrivalRate: 300  # Number of new users per second (simulating 50 users per second)
+      arrivalRate: 500  # Number of new users per second (simulating 50 users per second)
 
 scenarios:
   - flow:

@@ -61,4 +61,8 @@ export class ProductRepository {
         })
 
     }
+
+    async getProducts(){
+        return this.db.product.findMany({take:25})
+    }
 }
