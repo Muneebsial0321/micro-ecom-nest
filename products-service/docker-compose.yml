@@ -61,23 +61,6 @@ services:
       - postgres
     networks:
       - db_network
-  # pgbouncer:
-  #   image: edoburu/pgbouncer
-  #   container_name: pg-prod-bouncer
-  #   restart: always
-  #   depends_on:
-  #     - product_db
-  #   environment:
-  #     DB_HOST: product_db
-  #     DB_PORT: 5432
-  #     DB_USER: admin
-  #     DB_PASSWORD: 123
-  #     DB_NAME: product_db
-  #     POOL_MODE: "transaction"
-  #     MAX_CLIENT_CONN: 500
-  #     DEFAULT_POOL_SIZE: 100
-  #   ports:
-  #     - 5433:5432 # PgBouncer listens here
 
 volumes:
   elasticsearch_data:
