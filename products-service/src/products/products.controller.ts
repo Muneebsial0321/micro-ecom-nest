@@ -8,9 +8,6 @@ export class ProductsController {
   constructor(private readonly product: ProductsService) { }
 
 
-  @Get()
-  GetAllProducts() { }
-
   @Get('s/:id')
   GetSingleProduct(@Param('id') id: string) {
     return this.product.getSingleProduct(id)
@@ -21,6 +18,7 @@ export class ProductsController {
 
   @Get("find")
   FindOnMatch(@Query() find: FindType) {
+    console.log({find})
     return this.product.findProducts(find)
   }
 

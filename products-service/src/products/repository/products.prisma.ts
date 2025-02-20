@@ -28,6 +28,7 @@ export class ProductRepository {
     }
 
     async findProducts(find: FindType) {
+        
         return await this.db.product.findMany({
             // Select
             select: {
@@ -41,11 +42,11 @@ export class ProductRepository {
 
             // search
             where: {
-                ...(find.name ? { name: find.name } : {}),
+                ...(find.name ? { name: {contains:find.name, mode:"insensitive"} } : {}),
                 ...(find.colour ? { colours: { has: find.colour } } : {}),
                 ...(find.size ? { size: { has: find.size } } : {}),
-                ...(find.lowerPrice ? { price: { lte: find.lowerPrice } } : {}),
-                ...(find.higherPrice ? { price: { gte: find.higherPrice } } : {}),
+                ...(find.lowerPrice ? { price: { gte: +find.lowerPrice + 0.0 } } : {}),
+                ...(find.higherPrice ? { price: { lte: +find.higherPrice + 0.0 } } : {}),
             },
 
             // pagination

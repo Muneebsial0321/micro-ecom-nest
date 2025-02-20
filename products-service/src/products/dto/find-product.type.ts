@@ -16,12 +16,12 @@ export class FindType {
     colour?: string | null = null
 
     @IsNumber()
-    @Transform(({value}) => (typeof value === "string" ? Number(value) : 0))
+    @Transform(({value}) => (typeof value === "string" ? parseFloat(value) : 0.0))
     @IsOptional()
     lowerPrice?: number | null = 0
 
     @IsNumber()
-    @Transform(({value}) => (typeof value === "string" ? Number(value) : Infinity))
+    @Transform(({value}) => (typeof value === "string" ? parseFloat(value) : Infinity))
     @IsOptional()
     higherPrice?: number | null
 
