@@ -47,17 +47,20 @@ services:
     image: edoburu/pgbouncer:latest
     container_name: pgbouncer
     environment:
-      DATABASE_URL: postgres://admin:123@product_db:5432/product_db
-      POOL_MODE: session
-      MAX_CLIENT_CONN: 100
-      DEFAULT_POOL_SIZE: 20
+      DB_HOST: product_db
+      DATABASES_PORT: 5432
+      DATABASES_USER: admin
+      DATABASES_PASSWORD: 123
+      DATABASES_NAME: mydb
+      AUTH_TYPE: md5
+      AUTH_USER: myuser
+      LISTEN_PORT: 6432
     ports:
-      - "6434:5432"
+      - "6432:6432"
     depends_on:
-      product_db:
-        condition: service_healthy 
+      - postgres
     networks:
-      - db-network
+      - db_network
   # pgbouncer:
   #   image: edoburu/pgbouncer
   #   container_name: pg-prod-bouncer
